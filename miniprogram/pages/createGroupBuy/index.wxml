@@ -1,0 +1,155 @@
+<!--pages/createGroupBuy/index.wxml-->
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="container">
+  <!-- 标题和描述 -->
+  <view>
+    <view class="title_bg">
+      <image src="../../assets/images/people.svg"></image>
+    </view>
+    <view class="title_wrapper card_container">
+      <van-cell-group>
+        <van-field
+        size="large"
+        value="{{ message }}" 
+        placeholder="轻触添加团购标题" 
+        custom-style="font-weight: bold" 
+        bind:input="buyTitleChanged"/>
+
+        <hg-editor placeholder="轻触添加团购详细介绍" bind:input="buyDescChanged"></hg-editor>
+      </van-cell-group>
+    </view>
+  </view> <!-- 标题和描述 END -->
+
+  <view class="info">团购商品</view>
+
+  <!-- 团购商品 -->
+  <view class="card_container" wx:for="{{skuList}}" wx:key="index">
+    <view class="d-flex justify-content-between">
+      <view class="pos-relative">
+        <span class="googs_seq">{{index + 1}}</span>
+      </view>
+      <view class="googd_func">
+        <van-tag class="ml-2" plain wx:if="{{index > 0}}"
+          bindtap="moveSku" data-index="{{index}}" data-direction="{{-1}}">上移</van-tag>
+        <van-tag class="ml-2" plain wx:if="{{index < skuList.length - 1}}"
+          bindtap="moveSku" data-index="{{index}}" data-direction="{{1}}">下移</van-tag>
+        <van-tag class="ml-2" type="warning" plain bindtap="deleteSku" data-index="{{index}}">删除</van-tag>
+      </view>
+    </view>
+    <van-cell-group>
+      <van-field
+        class="sku_name"
+        value="{{ item.name }}"
+        required
+        clearable
+        label="商品"
+        placeholder="请输入商品名称"
+        bind:blur="skuChanged"
+        data-type="name"
+        data-index="{{index}}"
+      >
+        <view class="d-flex justify-content-center align-content-center sku_icon" 
+        wx:if="{{!item.imgSrc}}" bindtap="addSkuImg" data-index="{{index}}"  slot="right-icon">
+
+          <van-icon name="photo-o" />
+        </view>
+
+        <view class="sku_img_wrapper" slot="right-icon" wx:if="{{item.imgSrc}}">
+          <van-icon name="cross" size="25rpx" bindtap="deleteSkuImg" data-index="{{index}}"></van-icon>
+          <image src="{{item.imgSrc}}" mode="aspectFill" bindtap="previewSkuImg" data-imgsrc="{{item.imgSrc}}"></image>
+        </view>
+
+      </van-field>
+
+      <van-field
+        value="{{item.price}}"
+        required
+        label="价格"
+        placeholder="0.0"
+        required
+        type="digit"
+        bind:blur="skuChanged"
+        data-type="price"
+        data-index="{{index}}"
+      >
+        <span slot="right-icon">元</span>
+      </van-field>
+
+      <van-field
+        value="{{ item.numbers }}"
+        required
+        clearable
+        label="数量"
+        type="number"
+        border="{{ false }}"
+        bind:blur="skuChanged"
+        data-type="numbers"
+        data-index="{{index}}"
+      />
+    </van-cell-group>
+
+  </view> <!-- 团购商品 END -->
+
+  <view class="add_googs_btn_wrapper">
+    <van-button icon="add" type="primary" size="small" block custom-class="add_googs_btn" bindtap="addSku">添加商品</van-button>
+  </view>
+
+  <view class="info">团购设置</view>
+
+  <!-- 团购设置 -->
+  <view class="card_container">
+    <van-cell-group>
+      <van-cell required title="选择小区" is-link label="{{location.name}}" bindtap="selectLocation"/>
+      <van-cell required class="buy_time">
+        <view slot="title" class="buy_time_title">
+          <view class="van-cell-text">团购时间</view>
+        </view>
+        <view slot="right-icon" class="buy_time_right">
+          <view bindtap="showTimePicker" data-timetype="start" class="d-flex justify-content-between">
+            <view>
+              <span class="mr-2 color-darkgray">开始</span>
+              <span>{{filter.formatTime(startDatetime)}}</span>
+            </view>
+            <view>></view>
+          </view>
+          <view bindtap="showTimePicker" data-timetype="end" class="d-flex justify-content-between">
+            <view>
+              <span class="mr-2 color-darkgray">结束</span>
+              <span>{{filter.formatTime(endDatetime)}}</span>
+            </view>
+            <view>></view>
+          </view>
+        </view>
+        <datetime-picker
+        show="{{timeOpened}}" 
+        timeType="{{timeType}}"
+        startDatetime="{{startDatetime}}"
+        endDatetime="{{endDatetime}}"
+        bind:closed="timePickerClosed"></datetime-picker>
+      </van-cell>
+
+      <van-field
+        class="condition"
+        value="{{ condition.value }}"
+        required
+        label="起送条件"
+        type="number"
+        border="{{ false }}"
+        bind:input="conditionValueChanged"
+      >
+        <van-radio-group value="{{condition.type}}" slot="right-icon" direction="horizontal" bind:change="conditionTypeChanged">
+          <van-radio icon-size="15px" name="price">元</van-radio>
+          <van-radio icon-size="15px" name="numbers">件</van-radio>
+        </van-radio-group>
+      </van-field>
+
+    </van-cell-group>
+
+  </view> <!-- 团购设置 END -->
+
+  <!-- 底部按钮 -->
+  <view class="footer d-flex justify-content-center align-items-center">
+    <van-button plain type="primary" class="mr-2">保存并预览</van-button>
+    <van-button type="primary">发布团购</van-button>
+  </view>
+</view>

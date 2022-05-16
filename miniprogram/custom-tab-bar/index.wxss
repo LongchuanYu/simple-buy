@@ -1,0 +1,4 @@
+/* custom-tab-bar/index.wxss */
+.background_color {
+  background-color: rgb(245, 245, 245);
+}

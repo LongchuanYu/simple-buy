@@ -1,0 +1,13 @@
+<!--pages/home/index.wxml-->
+<view class="container home_page">
+  <view class="topper_container" style="background-image: url('../../assets/images/people.svg');">
+    <view class="topper_wrapper">
+      <view>发起我的团购</view>
+      <van-button type="primary" block bindtap="gotoCreateGroupBuy">发起团购</van-button>
+    </view>
+
+  </view>
+  <view class="bottom_container">
+    <hg-editor bind:input="test"></hg-editor>
+  </view>
+</view>

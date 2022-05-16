@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "van-field": "../../npm/@vant/weapp/field/index",
+    "van-uploader": "../../npm/@vant/weapp/uploader/index",
+    "hg-editor": "../../components/hg-editor/hg-editor",
+    "van-tag": "../../npm/@vant/weapp/tag/index",
+    "van-cell": "../../npm/@vant/weapp/cell/index",
+    "van-cell-group": "../../npm/@vant/weapp/cell-group/index",
+    "datetime-picker": "../../components/datetime-picker/index",
+    "van-radio": "../../npm/@vant/weapp/radio/index",
+    "van-radio-group": "../../npm/@vant/weapp/radio-group/index"
+  }
+}

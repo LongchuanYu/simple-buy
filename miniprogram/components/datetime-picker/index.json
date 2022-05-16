@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-datetime-picker": "../../npm/@vant/weapp/datetime-picker/index",
+    "van-action-sheet": "../../npm/@vant/weapp/action-sheet/index"
+  }
+}

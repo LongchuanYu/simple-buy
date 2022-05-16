@@ -1,0 +1,14 @@
+<!--components/datetime-picker/index.wxml-->
+<van-action-sheet 
+show="{{ show }}" 
+bind:click-overlay="closeTimePicker">
+  <van-datetime-picker
+    type="datetime"
+    value="{{ selectedDate }}"
+    max-date="{{maxDatetime}}"
+    min-date="{{minDatetime}}"
+    bind:confirm="confirm"
+    bind:cancel="cancel"
+    bind:input="timeChanged"
+  />
+</van-action-sheet>
