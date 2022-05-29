@@ -1,1 +1,74 @@
 /* pages/groupBuyPage/index.wxss */
+.container {
+  padding-bottom: 150rpx;
+}
+
+.header {
+  height: 300rpx;
+  width: 100%;
+}
+
+.card_container {
+  position: relative;
+  background-color: white;
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+}
+
+.avatar_and_share {
+  image {
+    position: absolute;
+    left: 30rpx;
+    top: -80rpx;
+    width: 120rpx;
+    height: 120rpx;
+    object-fit: contain;
+    border-radius: 15rpx;
+    border: 1px solid #eee;
+    box-shadow: 3px 3px 13px 2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.progress_wrapper {
+  width: 200rpx;
+  padding-left: 50rpx;
+  .progress {
+    transform: translate(0, 15rpx);
+  }
+}
+
+.googs_container {
+  background-color: white;
+  padding-bottom: 20rpx;
+  margin-bottom: 30rpx;
+  van-googs-action {
+    margin-bottom: 20rpx;
+  }
+}
+
+.goods_bottom_wrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  .goods_numbers {
+    padding: 0 30rpx;
+  }
+  .goods_add_dec {
+    padding: 10rpx;
+    height: 40rpx;
+    width: 40rpx;
+  }
+}
+
+.record_container {
+  .avatar {
+    width: 80rpx;
+    height: 80rpx;
+  }
+}
+
+.cart_googs_wrapper {
+  height: 331px;
+  overflow: auto;
+  padding: 30rpx 0;
+}

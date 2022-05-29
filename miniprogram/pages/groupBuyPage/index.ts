@@ -5,7 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    cartShow: false
+  },
 
+  showCart() {
+    this.setData({cartShow: true})
+  },
+
+  closeCart() {
+    this.setData({cartShow: false})
   },
 
   /**

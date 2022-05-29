@@ -1,2 +1,3 @@
 <!--pages/personalPage/index.wxml-->
-<text>pages/personalPage/index.wxml</text>
+<text>登录</text>
+<button bindtap="gotoLoginPage">login</button>

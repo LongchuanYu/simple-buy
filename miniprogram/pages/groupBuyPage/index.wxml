@@ -1,2 +1,103 @@
 <!--pages/groupBuyPage/index.wxml-->
-<text>pages/groupBuyPage/index.wxml</text>
+<page-meta page-style="overflow: {{cartShow ? 'hidden' : 'visible'}}" />
+<view class="container">
+  <view class="header" style="background-image: url('../../assets/images/goup-buy-page-bg.jpg');"></view>
+  <!-- 团长信息 -->
+  <view class="card_container">
+    <view class="avatar_and_share">
+      <image src="https://6d79-mywork-tw0jb-1258937552.tcb.qcloud.la/assets/avatar.png"></image>
+    </view>
+    <view style="height: 60rpx;">
+      <view style="float: right;"></view>
+    </view>
+    <view style="font-size: 30rpx; font-weight: 600;">
+      152斤的壮汉！
+    </view>
+  </view> <!-- -->
+
+  <!-- 小区信息 -->
+  <view class="card_container">
+    <view class="mb-2">配送小区</view>
+    <view class="d-flex justify-content-start align-content-center mb-2">
+      <van-icon name="location" color="#07c160" class="mr-2"></van-icon>
+      <view>长青坊</view>
+    </view>
+    <view class="d-flex justify-content-start align-content-center">
+      <view class="progress_wrapper mr-2">
+        <van-progress color="#07c160" custom-class="progress" percentage="50" show-pivot="{{false}}"/>
+      </view>
+      <view style="font-size: 25rpx;">还差3件起送</view>
+    </view>
+  </view> <!-- -->
+
+  <!-- 团购信息 -->
+  <view class="card_container">
+    <view class="mb-2" style="font-weight: 600;">title</view>
+    <view>aaaaaaaaaaaaaaaaaaaaa斤斤计较斤斤计较急急急顶顶顶顶顶顶顶顶顶顶顶</view>
+  </view> <!-- -->
+
+  <!-- 商品信息 -->
+  <view class="googs_container">
+    <van-search value="{{ value }}" shape="round" placeholder="请输入搜索关键词" />
+  <van-card
+    price="2.00"
+    desc="描述信息"
+    title="商品标题"
+    thumb="{{ imageURL }}"
+  >
+    <view slot="bottom" class="goods_bottom_wrapper">
+      <!-- <van-button size="small" color="#07c160">加入购物车</van-button> -->
+      <van-button icon="minus" type="primary" plain custom-class="goods_add_dec"/>
+      <label class="goods_numbers">1</label>
+      <van-button icon="plus" type="primary" custom-class="goods_add_dec"/>
+    </view>
+  </van-card>
+  
+  </view> <!-- -->
+
+  <!-- 跟团记录 -->
+  <view class="card_container record_container">
+    <view class="mb-2">跟团记录</view>
+    <view class="d-flex align-items-start">
+      <view class="mr-3 d-flex justify-content-start align-items-center">
+        <view class="mr-3 text-secondary">1</view>
+        <image class="avatar" src="https://6d79-mywork-tw0jb-1258937552.tcb.qcloud.la/assets/avatar.png"></image>
+      </view>
+      <view style="margin-top: -10rpx;">
+        <view class="mb-1">liyang</view>
+        <view class="text-third">zhutou +1</view>
+        <view class="text-third">zhutou +1</view>
+        <view class="text-third">zhutou +1</view>
+        <view class="text-third">zhutou +1</view>
+      </view>
+    </view>
+  </view> <!-- -->
+
+  <!-- 底栏 -->
+  <view class="">
+    <van-goods-action>
+      <van-goods-action-icon icon="cart-o" text="购物车" bind:click="showCart"  info="5" />
+      <van-goods-action-button text="立即购买" color="#07c160" bind:click="onClickButton" />
+    </van-goods-action>
+  </view> <!-- -->
+
+  <!-- 购物车 -->
+  <van-action-sheet show="{{ cartShow }}" title="已选1件商品" bind:click-overlay="closeCart" bind:close="closeCart">
+    <view class="cart_googs_wrapper">
+      <van-card
+        price="2.00"
+        desc="描述信息"
+        title="商品标题"
+        thumb="{{ imageURL }}"
+      >
+        <view slot="bottom" class="goods_bottom_wrapper">
+          <!-- <van-button size="small" color="#07c160">加入购物车</van-button> -->
+          <van-button icon="minus" type="primary" plain custom-class="goods_add_dec"/>
+          <label class="goods_numbers">1</label>
+          <van-button icon="plus" type="primary" custom-class="goods_add_dec"/>
+        </view>
+      </van-card>
+      <van-divider />
+    </view>
+  </van-action-sheet>
+</view>

@@ -1,40 +1,24 @@
-// pages/home/index.ts
-import Api from '../../services/api'
+// pages/login/index.ts
+import auth from '../../utils/auth'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
-  test(e: any): void {
-    console.log(e);
-  },
-  
-  gotoCreateGroupBuy() {
-    // wx.login({
-    //   success: (res) => {
-    //     console.log(res)
-    //   }
-    // })
-
-    wx.checkSession({
-      success: (res) => {
-        console.log(res)
-      },
-      fail: (res) => {
-        console.log('failed', res)
-      }
-    })
-    // wx.navigateTo({ url: '/pages/createGroupBuy/index' });
+  async bindGetUserInfo(e: any) {
+    const resp = await auth.getUserProfile()
+    if (!resp) return
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-
   },
 
   /**
@@ -48,9 +32,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.getTabBar().setData({
-      active: 0
-    })
+
   },
 
   /**
